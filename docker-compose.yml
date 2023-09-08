@@ -10,7 +10,7 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app
       - MYSQL_USER=app
-      - MYSQL_PASSWORD=passnpm
+      - MYSQL_PASSWORD=pass
 
   postgres:
     image: postgres:12-alpine
