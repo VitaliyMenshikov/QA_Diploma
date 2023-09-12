@@ -5,10 +5,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.netology.data.DBHelper;
 import ru.netology.data.DataHelper;
 import ru.netology.page.CreditPage;
@@ -47,9 +44,9 @@ public class CreditAPITests {
         SelenideLogger.removeListener("allure");
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Позитивный. Тур в кредит с действующей карты, создание записи в таблице credit_request_entity")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с действующей карты, создание записи в таблице credit_request_entity")
     @Test
     public void shouldValidTestCreditCardApprovedEntityAdded() {
         var cardInfo = DataHelper.getValidCardApproved();
@@ -62,9 +59,9 @@ public class CreditAPITests {
         assertEquals("APPROVED", DBHelper.getCreditStatus());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Позитивный. Тур в кредит с действующей карты, создание записи в таблице orders")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с действующей карты, создание записи в таблице order_entity")
     @Test
     public void shouldValidTestCreditCardApprovedOrdersAdded() {
         var cardInfo = DataHelper.getValidCardApproved();
@@ -75,9 +72,9 @@ public class CreditAPITests {
         assertEquals(DBHelper.getBankIDForCredit(), DBHelper.getCreditID());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Позитивный. Тур в кредит с недействующей карты, создание записи в таблице credit_request_entity")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с недействующей карты, создание записи в таблице credit_request_entity")
     @Test
     public void shouldValidTestCreditCardDeclinedEntityAdded() {
         var cardInfo = DataHelper.getValidCardDeclined();
@@ -90,9 +87,9 @@ public class CreditAPITests {
         assertEquals("DECLINED", DBHelper.getCreditStatus());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Позитивный. Тур в кредит с недействующей карты, создание записи в таблице orders")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с недействующей карты, создание записи в таблице order_entity")
     @Test
     public void shouldValidTestCreditCardDeclinedOrdersAdded() {
         var cardInfo = DataHelper.getValidCardDeclined();
@@ -103,8 +100,8 @@ public class CreditAPITests {
         assertEquals(DBHelper.getBankIDForCredit(), DBHelper.getCreditID());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка пустого POST запроса кредита")
     @Test
     public void shouldCreditPOSTBodyEmpty() {
@@ -119,8 +116,8 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка POST запроса кредита с пустым значением number")
     @Test
     public void shouldCreditPOSTNumberEmpty() {
@@ -135,8 +132,8 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка POST запроса кредита с пустым значением month")
     @Test
     public void shouldCreditPOSTMonthEmpty() {
@@ -151,8 +148,8 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка POST запроса кредита с пустым значением year")
     @Test
     public void shouldCreditPOSTYearEmpty() {
@@ -167,8 +164,8 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка POST запроса кредита с пустым значением holder")
     @Test
     public void shouldCreditPOSTHolderEmpty() {
@@ -183,8 +180,8 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Тестирование API")
-    @Feature(value = "Тур в кредит с карты")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура в кредит")
     @Story(value = "Отправка POST запроса кредита с пустым значением cvc")
     @Test
     public void shouldCreditPOSTCvcEmpty() {
@@ -199,9 +196,9 @@ public class CreditAPITests {
         assertEquals(0, orders.size());
     }
 
-    @Epic(value = "Обращение к БД через форму орплаты")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Тур в кредит с действующей карты(ввод данных через форму), создание записи в таблице credit_request_entity")
+    @Epic(value = "Обращение к БД через форму оплаты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Тур в кредит с действующей карты (ввод данных через форму), создание записи в таблице credit_request_entity")
     @Test
     public void shouldValidTestFormCreditCardApprovedEntityAdded() {
         open("http://localhost:8080/");
@@ -216,9 +213,9 @@ public class CreditAPITests {
         assertEquals("APPROVED", DBHelper.getCreditStatus());
     }
 
-    @Epic(value = "Обращение к БД через форму орплаты")
-    @Feature(value = "Тур в кредит с карты")
-    @Story(value = "Тур в кредит с недействующей карты(ввод данных через форму), создание записи в таблице credit_request_entity")
+    @Epic(value = "Обращение к БД через форму оплаты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Покупка тура в кредит с недействующей карты (ввод данных через форму), создание записи в таблице credit_request_entity")
     @Test
     public void shouldValidTestFormCreditCardDeclinedEntityAdded() {
         open("http://localhost:8080/");

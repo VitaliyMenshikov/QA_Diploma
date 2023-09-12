@@ -1,6 +1,9 @@
 package ru.netology.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import ru.netology.data.DBHelper;
@@ -42,7 +45,9 @@ public class PaymentAPITests {
         SelenideLogger.removeListener("allure");
     }
 
-    @DisplayName("Позитивный. Покупка тура с действующей карты, создание записи в таблице payment_entity")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Позитивный. Покупка тура с действующей карты, создание записи в таблице payment_entity")
     @Test
     public void shouldValidTestCardApprovedEntityAdded() {
         var cardInfo = DataHelper.getValidCardApproved();
@@ -55,7 +60,9 @@ public class PaymentAPITests {
         assertEquals("APPROVED", DBHelper.getPaymentStatus());
     }
 
-    @DisplayName("Позитивный. Покупка тура с действующей карты, создание записи в таблице orders")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Позитивный. Покупка тура с действующей карты, создание записи в таблице order_entity")
     @Test
     public void shouldValidTestCardApprovedOrdersAdded() {
         var cardInfo = DataHelper.getValidCardApproved();
@@ -66,7 +73,9 @@ public class PaymentAPITests {
         assertEquals(DBHelper.getBankIDForPayment(), DBHelper.getPaymentID());
     }
 
-    @DisplayName("Позитивный. Покупка тура с недействующей карты, создание записи в таблице payment_entity")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Позитивный. Покупка тура с недействующей карты, создание записи в таблице payment_entity")
     @Test
     public void shouldValidTestCardDeclinedEntityAdded() {
         var cardInfo = DataHelper.getValidCardDeclined();
@@ -79,7 +88,9 @@ public class PaymentAPITests {
         assertEquals("DECLINED", DBHelper.getPaymentStatus());
     }
 
-    @DisplayName("Позитивный. Покупка тура с недействующей карты, создание записи в таблице orders")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Позитивный. Покупка тура с недействующей карты, создание записи в таблице order_entity")
     @Test
     public void shouldValidTestCardDeclinedOrdersAdded() {
         var cardInfo = DataHelper.getValidCardDeclined();
@@ -90,7 +101,9 @@ public class PaymentAPITests {
         assertEquals(DBHelper.getBankIDForPayment(), DBHelper.getPaymentID());
     }
 
-    @DisplayName("Отправка пустого POST запроса платежа")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка пустого POST запроса платежа")
     @Test
     public void shouldPOSTBodyEmpty() {
         var cardInfo = DataHelper.getAllEmpty();
@@ -104,7 +117,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Отправка POST запроса платежа с пустым значением number")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка POST запроса платежа с пустым значением number")
     @Test
     public void shouldPOSTNumberEmpty() {
         var cardInfo = DataHelper.getCardEmpty();
@@ -118,7 +133,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Отправка POST запроса платежа с пустым значением month")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка POST запроса платежа с пустым значением month")
     @Test
     public void shouldPOSTMonthEmpty() {
         var cardInfo = DataHelper.getMonthEmpty();
@@ -132,7 +149,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Отправка POST запроса платежа с пустым значением year")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка POST запроса платежа с пустым значением year")
     @Test
     public void shouldPOSTYearEmpty() {
         var cardInfo = DataHelper.getYearEmpty();
@@ -146,7 +165,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Отправка POST запроса платежа с пустым значением holder")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка POST запроса платежа с пустым значением holder")
     @Test
     public void shouldPOSTHolderEmpty() {
         var cardInfo = DataHelper.getHolderEmpty();
@@ -160,7 +181,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Отправка POST запроса платежа с пустым значением cvc")
+    @Epic(value = "API-тесты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Отправка POST запроса платежа с пустым значением cvc")
     @Test
     public void shouldPOSTCvcEmpty() {
         var cardInfo = DataHelper.getCvcEmpty();
@@ -174,7 +197,9 @@ public class PaymentAPITests {
         assertEquals(0, orders.size());
     }
 
-    @DisplayName("Покупка тура с действующей карты(ввод данных через форму), создание записи в таблице payment_entity")
+    @Epic(value = "Обращение к БД через форму оплаты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Покупка тура с действующей карты (ввод данных через форму), создание записи в таблице payment_entity")
     @Test
     public void shouldValidFormTestCardApprovedEntityAdded() {
         open("http://localhost:8080/");
@@ -189,7 +214,9 @@ public class PaymentAPITests {
         assertEquals("APPROVED", DBHelper.getPaymentStatus());
     }
 
-    @DisplayName("Покупка тура с недействующей карты(ввод данных через форму), создание записи в таблице payment_entity")
+    @Epic(value = "Обращение к БД через форму оплаты")
+    @Feature(value = "Оплата тура картой")
+    @Story(value = "Покупка тура с недействующей карты (ввод данных через форму), создание записи в таблице payment_entity")
     @Test
     public void shouldValidFormTestCardDeclinedEntityAdded() {
         open("http://localhost:8080/");

@@ -1,6 +1,9 @@
 package ru.netology.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import ru.netology.data.DBHelper;
@@ -34,6 +37,9 @@ public class CreditUITests {
     }
 
     //Positive tests
+    @Epic(value = "UI-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с действующей карты (номер с пробелами)")
     @Test
     public void shouldValidCreditTestCardApproved() {
         MainPage mainPage = new MainPage();
@@ -44,6 +50,9 @@ public class CreditUITests {
         assertEquals("APPROVED", DBHelper.getCreditStatus());
     }
 
+    @Epic(value = "UI-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с действующей карты (номер без пробелов)")
     @Test
     public void shouldValidCreditTestCardApprovedWithoutSpaces() {
         MainPage mainPage = new MainPage();
@@ -54,6 +63,9 @@ public class CreditUITests {
         assertEquals("APPROVED", DBHelper.getCreditStatus());
     }
 
+    @Epic(value = "UI-тесты")
+    @Feature(value = "Оплата тура в кредит")
+    @Story(value = "Позитивный. Покупка тура в кредит с недействующей карты (номер с пробелами)")
     @Test
     public void shouldValidCreditTestCardDeclined() {
         MainPage mainPage = new MainPage();
