@@ -6,3 +6,5 @@ target
 *.iml
 MySql
 PostgresSql
+build
+.gradle
