@@ -122,20 +122,6 @@ public class DataHelper {
         return new CardInfo("4444 4444 4444 4441", getMonth(1), "00", getValidHolder(), getValidCvc());
     }
 
-//    public static String getYear4char(int year) {
-//        return LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yyyy"));
-//    }
-
-//    public static CardInfo getValidYear4char() {
-//        return new CardInfo("4444 4444 4444 4441", getMonth(1), getYear4char(1), getValidHolder(),
-//                getValidCvc());
-//    }
-//
-//    public static CardInfo getInvalidYearSymbols() {
-//        return new CardInfo("4444 4444 4444 4441", getMonth(1), fakerEng.letterify("??"), getValidHolder(),
-//                getValidCvc());
-//    }
-
     public static CardInfo getYearEmpty() {
         return new CardInfo("4444 4444 4444 4441", getMonth(1), "", getValidHolder(), getValidCvc());
     }
