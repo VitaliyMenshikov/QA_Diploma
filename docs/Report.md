@@ -17,10 +17,13 @@
 ### Количество тест-кейсов ###
 
 Всего в тестировании проведено 61 теста, 23 из которых успешны (37,7% в процентном соотношении).
+![1](https://github.com/VitaliyMenshikov/QA_Diploma/assets/118969325/919c9d05-4b7d-48f2-902b-1599dde0edba)
+![2](https://github.com/VitaliyMenshikov/QA_Diploma/assets/118969325/14427de8-1a23-4e4a-933e-be8ee93f73d5)
 
 
 
 #### Тесты по функционалу: ####
+![3](https://github.com/VitaliyMenshikov/QA_Diploma/assets/118969325/fa854701-c0ca-49dd-9f10-4ed50f21b450)
 
 
 
